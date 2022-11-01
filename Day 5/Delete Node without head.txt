@@ -1,0 +1,5 @@
+void deleteNode(ListNode* node) {
+        ListNode* bp = node->next;
+        node->val = bp->val;
+        node->next = bp->next;
+    }
