@@ -1,0 +1,32 @@
+void rev(vector<ListNode*>& vect,int k){
+       vector<int> vect2;
+        for(int i=0;i<k;i++){
+            vect2.push_back(vect[i]->val);
+        }
+        for(int i=0;i<k;i++){
+            vect[i]->val = vect2[k-1-i];
+        }
+    }
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        vector<ListNode*> node_arr;
+        ListNode* ptr = head;
+        int qs = 0;
+        while(ptr && qs<k){
+            qs++;
+            node_arr.push_back(ptr);
+            ptr = ptr->next;
+        }
+        rev(node_arr,k);
+        qs = 0;
+        while(ptr){
+            qs++;
+            node_arr[qs-1] = ptr;
+            if(qs==k){
+                rev(node_arr,k);
+                qs = 0;
+            }
+            ptr = ptr->next;
+        }
+        
+        return head;
+    }

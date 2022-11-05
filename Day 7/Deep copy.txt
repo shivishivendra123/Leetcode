@@ -1,0 +1,37 @@
+Node* copyRandomList(Node* head) {
+        Node* ptr = head;
+        if(!head){
+            return head;
+        }
+        while(ptr){
+            Node* toadd = new Node(ptr->val);
+            Node* front = ptr->next;
+            ptr->next = toadd;
+            toadd->next = front;
+            ptr = front;
+        }
+           
+        ptr = head;
+        while(ptr){
+            Node* front = ptr->next->next;
+            if(ptr->random){
+                ptr->next->random = ptr->random->next;
+            }
+            ptr = front;
+        }
+        ptr = head;
+        Node * d = ptr->next;
+        while(ptr){
+            Node* front = ptr->next->next;
+            Node* tobypass = ptr->next;
+            ptr->next = front;
+            if(!front){
+              tobypass->next = NULL;  
+            }else{
+              tobypass->next = front->next;  
+            }
+            
+            ptr = front;
+        }
+        return d;
+    }

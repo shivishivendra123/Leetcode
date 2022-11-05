@@ -1,0 +1,20 @@
+int majorityElement(vector<int>& nums) {
+        unordered_map<int,int> c;
+        int s = nums.size();
+        int q = s/2;
+        int ans = 0;
+        for(int i=0;i<s;i++){
+            if(c.find(nums[i])!=c.end()){
+                c[nums[i]]++;
+            }
+            else{
+                c[nums[i]] = 1;
+            }
+        }
+        for(auto a:c){
+            if(a.second>q){
+                ans = a.first;
+            }
+        }
+        return ans;
+    }

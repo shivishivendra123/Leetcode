@@ -1,0 +1,19 @@
+double myPow(double x, int n) {
+        double pow = 1;
+        double ans = 1;
+        long long new_pow = n;
+        if(new_pow<0) 
+            new_pow = -1*new_pow;
+        while(new_pow>0){
+            if(new_pow%2 == 1){
+                ans = ans* x;
+                new_pow--;
+            }
+            else{
+                x = x*x;
+                new_pow = new_pow/2;
+            }
+        }
+        if(n<0) return 1/ans;
+        return ans;
+    }

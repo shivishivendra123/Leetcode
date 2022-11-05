@@ -1,0 +1,17 @@
+int removeDuplicates(vector<int>& nums) {
+        map<int,int> m;
+        int s = nums.size();
+        for(int i =0;i<s;i++){
+            if(m.find(nums[i])!=m.end()){
+                m[nums[i]]++;
+            }else{
+                m[nums[i]] = 1;
+            }
+        }
+        int k=0;
+         for(auto h:m){
+             nums[k] = h.first;
+             k++;
+         }
+        return k;
+    }

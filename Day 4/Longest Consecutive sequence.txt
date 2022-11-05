@@ -1,0 +1,38 @@
+int longestConsecutive(vector<int>& nums) {
+        map<int,int> m;
+        int curr = 1;
+        int max = 1;
+        int n = nums.size();
+        if(n == 0 ){
+            return 0;
+        }
+        for(int i=0;i<n;i++){
+            if(m.find(nums[i])!=m.end()){
+                continue;
+            }
+            else{
+                m[nums[i]] = 1;
+            }
+        }
+        bool isfirst = false;
+        int prev = 0;
+        for(auto i: m){
+            if(!isfirst){
+                isfirst = true;
+                prev = i.first;
+            }
+            else{
+                if(i.first-prev == 1){
+                    curr++;
+                }
+                else{
+                    curr = 1 ;
+                }
+                if(curr>max){
+                    max = curr;
+                } 
+            }
+            prev = i.first;
+        }
+        return max;
+    }

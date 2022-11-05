@@ -1,0 +1,19 @@
+ListNode *detectCycle(ListNode *head) {
+        ListNode* slow = head;
+        unordered_map<ListNode*,int> m;
+        bool isloop = false;
+        ListNode* tbr = NULL; 
+        while(slow){
+            if(m.count(slow)>0){
+                isloop = true;
+                tbr = slow;
+                break;
+            }else{
+                m[slow] = 1;
+            }
+            slow = slow->next;
+        }
+        
+        if(isloop) return tbr;
+        return NULL;
+    }
